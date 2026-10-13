@@ -7,6 +7,10 @@ reports only the tool-calling behaviors that change consistently.
 Your current model's behavior is the baseline. You do not write expected answers
 or assertions.
 
+![switch compare: Sonnet vs Haiku on six agent tasks, five unchanged and one flaky](docs/demo.gif)
+
+<sub>A real run (Claude Sonnet → Haiku on the example config); the 59-second wait is sped up.</sub>
+
 > Status: early (0.x). Not published to npm; run it from GitHub with `npx`.
 > Formats and categories may still change.
 
@@ -95,6 +99,18 @@ JSON configs work too (`compare switch.json`). Options: `--repeat <n>`,
 `--json <file>` (`-` for stdout), `--html <file>` (default `switch-report.html`),
 `--no-html`, `--no-cache`, `--concurrency <n>`.
 
+### Email redaction
+
+The text, JSON, and HTML reports replace any email address that does not appear
+in your config file with `[redacted-email]`, so an account address a model leaks
+into a reply or tool call is not written to a report you might share. Addresses
+that do appear in the config (for example an expected `send_email` recipient) are
+kept, so a changed recipient still shows up in the diff. Redaction happens only
+when reports are rendered: comparison and the response cache use the raw output.
+Addresses that appear only in an `import:`ed file are redacted. Dotless hosts
+(`alice@localhost`), quoted local parts, address literals, and internationalized
+addresses are all treated as email addresses.
+
 ### Providers
 
 | Id | Needs | Tool calling |
@@ -148,9 +164,10 @@ general eval tool as well.
   `anthropic:` or `openai:` for native tool calling.
 - **Claude Code adds its own context.** `claude -p` appends an environment
   section after the system prompt (working directory, platform, model name, date, and
-  the logged-in account email). Switch tells the model to ignore it. Before
-  that instruction was added, replies in two runs of the example mentioned the
-  account email. Review reports before sharing them.
+  the logged-in account email). Switch tells the model to ignore it, and
+  reports redact any email address that is not in your config (see
+  [Email redaction](#email-redaction)). The local `.switch-cache/` keeps raw
+  responses; do not share or commit it.
 - **Heuristics.** "Asked a clarifying question" and "refused" are English
   regex heuristics on replies without tool calls.
 - **Free text is not diffed.** Argument values containing spaces (queries,

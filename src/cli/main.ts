@@ -12,6 +12,7 @@ import { createProvider, ProviderError, type ProviderFactory } from "../provider
 import { renderCompareHtml } from "../report/compare-html.js";
 import { buildCompareJson } from "../report/compare-json.js";
 import { renderCompareText } from "../report/compare-text.js";
+import { redactCompareResult } from "../report/redact.js";
 import { buildJsonReport } from "../report/json.js";
 import { renderTextReport } from "../report/text.js";
 import { runFixture, type CaseResult } from "../runner/run.js";
@@ -149,8 +150,13 @@ async function runCompareCommand(rest: string[], io: CliIo): Promise<number> {
   const configPath = resolve(io.cwd, positionals[0] ?? "switch.yaml");
 
   let config, providers, concurrency;
+  let configText = "";
   try {
-    config = await loadCompareConfig(configPath);
+    config = await loadCompareConfig(configPath, async (path) => {
+      const text = await readFile(path, "utf8");
+      if (path === configPath) configText = text;
+      return text;
+    });
     const repeat = positiveInt(values.repeat, "--repeat");
     if (repeat !== undefined) config.repeat = repeat;
     concurrency = positiveInt(values.concurrency, "--concurrency") ?? 4;
@@ -165,12 +171,13 @@ async function runCompareCommand(rest: string[], io: CliIo): Promise<number> {
     throw error;
   }
 
-  const result = await runCompare(config, {
+  const compared = await runCompare(config, {
     ...providers,
     cache: values["no-cache"] ? null : new DiskCache(resolve(io.cwd, ".switch-cache")),
     concurrency,
     ...(io.progress ? { onProgress: (done: number, total: number) => io.progress!(`\rsampling ${done}/${total}${done === total ? "\n" : ""}`) } : {}),
   });
+  const result = redactCompareResult(compared, configText);
 
   const generatedAt = io.now?.() ?? new Date().toISOString();
   let reportPath: string | undefined;

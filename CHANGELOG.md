@@ -4,7 +4,7 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/); while the version is `0.x`, any
 release may contain breaking changes.
 
-## Unreleased
+## 0.2.0 - 2026-10-13
 
 ### Added
 
@@ -33,6 +33,13 @@ release may contain breaking changes.
 - Real example in `examples/compare/` (Sonnet vs Haiku via `claude-cli`).
 - `prepare` script so `npx github:inseat-labs/switch` builds on install.
 - Dependency: `yaml`.
+
+- Reports redact leaked email addresses. Any address in the text, JSON, or HTML
+  report that does not appear in the compare config becomes `[redacted-email]`;
+  config addresses are kept so recipient changes still diff. The scanner is
+  linear-time, so long model output cannot stall a run. Written by
+  `fusion run` (Claude), reviewed by Codex, finished by a maintainer.
+- README demo GIF of a real `compare` run.
 
 ### Changed
 

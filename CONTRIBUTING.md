@@ -1,6 +1,8 @@
 # Contributing
 
-Switch is in early development. A Milestone 0 offline checker exists.
+Switch is early (0.x). `switch compare` runs real model comparisons and `switch check` checks saved responses offline. First pull requests are welcome; issues labelled [good first issue](https://github.com/inseat-labs/switch/labels/good%20first%20issue) are a good start.
+
+By taking part you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Development
 
