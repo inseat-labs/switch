@@ -1,6 +1,6 @@
 # Example: would switching an everyday ops agent from Sonnet to Haiku change what it does?
 # Run from the repository root:
-#   npx github:inseat-labs/switch compare examples/compare/agent-upgrade.yaml
+#   npx switch-llm compare examples/compare/agent-upgrade.yaml
 baseline: claude-cli:sonnet
 candidate: claude-cli:haiku
 repeat: 2

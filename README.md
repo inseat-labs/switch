@@ -7,11 +7,11 @@ reports only the tool-calling behaviors that change consistently.
 Your current model's behavior is the baseline. You do not write expected answers
 or assertions.
 
-![switch compare: Sonnet vs Haiku on six agent tasks, five unchanged and one flaky](docs/demo.gif)
+![switch compare: Sonnet vs Haiku on six agent tasks, five unchanged and one flaky](https://raw.githubusercontent.com/inseat-labs/switch/main/docs/demo.gif)
 
 <sub>A real run (Claude Sonnet → Haiku on the example config); the 59-second wait is sped up.</sub>
 
-> Status: early (0.x). Not published to npm; run it from GitHub with `npx`.
+> Status: early (0.x). Published to npm as [`switch-llm`](https://www.npmjs.com/package/switch-llm); the command is `switch`.
 > Formats and categories may still change.
 
 ## 30-second quickstart
@@ -20,8 +20,8 @@ Requires Node.js 22+. The default config uses the `claude` CLI (Claude Code) wit
 your existing login, so no API key is needed to try it.
 
 ```bash
-npx github:inseat-labs/switch init      # writes a commented switch.yaml
-npx github:inseat-labs/switch compare   # baseline vs candidate, writes switch-report.html
+npx switch-llm init      # writes a commented switch.yaml
+npx switch-llm compare   # baseline vs candidate, writes switch-report.html
 ```
 
 When installed, the same commands are `switch init` and `switch compare`.

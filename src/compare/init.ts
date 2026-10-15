@@ -1,7 +1,7 @@
 export const STARTER_CONFIG = `# Switch: snapshot tests for AI model upgrades.
 # Your current model's behavior is the baseline. Switch runs every case on both
 # models several times and reports only changes that are consistent across samples.
-# Run: npx github:inseat-labs/switch compare
+# Run: npx switch-llm compare
 
 # provider:model. Providers: claude-cli (uses your Claude Code login, no API key),
 # anthropic (ANTHROPIC_API_KEY), openai (OPENAI_API_KEY; OPENAI_BASE_URL for

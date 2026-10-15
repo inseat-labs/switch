@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/); while the version is `0.x`, any
 release may contain breaking changes.
 
+## 0.2.1 - 2026-10-13
+
+### Changed
+
+- Published to npm as [`switch-llm`](https://www.npmjs.com/package/switch-llm).
+  Install or run it with `npx switch-llm`; the command is still `switch`. The
+  README, help text and website now use the npm command instead of
+  `npx github:inseat-labs/switch`, which still works.
+
 ## 0.2.0 - 2026-10-13
 
 ### Added

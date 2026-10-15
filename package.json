@@ -1,6 +1,6 @@
 {
-  "name": "@inseat-labs/switch",
-  "version": "0.2.0",
+  "name": "switch-llm",
+  "version": "0.2.1",
   "description": "Snapshot tests for AI model upgrades: run your prompts on the current and the candidate model and see which tool-calling behaviors consistently change.",
   "license": "Apache-2.0",
   "type": "module",
