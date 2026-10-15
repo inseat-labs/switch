@@ -9,7 +9,7 @@ or assertions.
 
 ![switch compare: Sonnet vs Haiku on six agent tasks, five unchanged and one flaky](https://raw.githubusercontent.com/inseat-labs/switch/main/docs/demo.gif)
 
-<sub>A real run (Claude Sonnet → Haiku on the example config); the 59-second wait is sped up.</sub>
+<sub>A real run (Claude Sonnet → Haiku on an earlier, 6-case version of the example config); the 59-second wait is sped up.</sub>
 
 > Status: early (0.x). Published to npm as [`switch-llm`](https://www.npmjs.com/package/switch-llm); the command is `switch`.
 > Formats and categories may still change.
@@ -27,30 +27,39 @@ npx switch-llm compare   # baseline vs candidate, writes switch-report.html
 When installed, the same commands are `switch init` and `switch compare`.
 
 Real output from [examples/compare/agent-upgrade.yaml](examples/compare/agent-upgrade.yaml)
-(6 everyday agent cases, 3 tools, `claude-cli:sonnet` vs `claude-cli:haiku`,
-`repeat: 2`). Full reports: [report.html](examples/compare/report.html),
-[report.json](examples/compare/report.json).
+(7 everyday agent cases, 3 tools, `claude-cli:sonnet` vs `claude-cli:haiku`,
+`repeat: 3`, 84 seconds, run on 2026-10-15). Full reports:
+[report.html](examples/compare/report.html), [report.json](examples/compare/report.json).
 
 ```text
-Switch  claude-cli:sonnet -> claude-cli:haiku   6 cases x 2 samples
+Switch  claude-cli:sonnet -> claude-cli:haiku   7 cases x 3 samples
 (claude-cli: tools are described in the prompt and returned as JSON, not native tool calls)
-? FLAKY       search docs              arg search_docs.limit (2/2 -> 1/2)
+? FLAKY       search docs              arg search_docs.limit (3/3 -> 2/3)
 ✓ SAME        search with limit
 ✓ SAME        schedule with details
+~ CHANGE      schedule past date       asked-instead-of-acting: asked a clarifying question instead of calling create_calendar_event (acted 3/3 -> 1/3, asked 0/3 -> 2/3)
 ✓ SAME        schedule missing date
 ✓ SAME        email with recipient
 ✓ SAME        email missing recipient
-calls: 24 live, 0 cached, 0 failed
-Result: 0 regression, 0 change, 5 same, 1 flaky   report: examples/compare/report.html
+calls: 42 live, 0 cached, 0 failed
+Result: 0 regression, 1 change, 5 same, 1 flaky   report: examples/compare/report.html
 ```
 
-On these six cases Haiku behaved like Sonnet: same tools, same identifier-like
-arguments, and it asked for the missing date and recipient too. The only
-difference was that Haiku once omitted the optional `limit` argument. With 2
-samples that is flaky, not a consistent change. An earlier run of this example,
-made before a small change to the `claude-cli` prompt, showed Haiku omitting
-`limit` in 2 of 2 samples. That is why the default is `repeat: 3`, and why you
-should use 3 or more samples before deciding.
+Haiku used the same tools and identifier-like arguments as Sonnet, and asked for
+the missing date and recipient too. Two differences:
+
+- **schedule past date** (a meeting on 2025-01-07): Sonnet created the event in
+  all 3 samples. Haiku pointed out the date had passed and asked which date was
+  meant in 2 of 3. That is a consistent change, so Switch reports it. Here the
+  candidate's behavior is arguably better; Switch tells you what changed, and you
+  decide whether it matters.
+- **search docs**: Haiku left out the optional `limit` argument once in 3
+  samples. It did not repeat, so it is flaky and does not fail the run.
+
+Why the example uses fixed dates: an earlier version asked for a meeting on
+2026-10-06. Once that date passed, the same "fully specified" case started
+changing between runs, because the models began reacting to a past date. Pin
+dates in your own cases, or add a case for the date behavior you care about.
 
 ## What it reports
 

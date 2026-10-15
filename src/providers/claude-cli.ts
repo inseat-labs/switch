@@ -69,7 +69,11 @@ export function parseClaudeEnvelope(stdout: string): string {
   }
   if (!envelope || typeof envelope !== "object") throw new ProviderError("claude CLI returned an unexpected envelope");
   const e = envelope as { is_error?: boolean; result?: unknown; subtype?: string };
-  if (e.is_error) throw new ProviderError(`claude CLI error${e.subtype ? ` (${e.subtype})` : ""}: ${truncate(String(e.result ?? ""), 300)}`);
+  if (e.is_error) {
+    // Auth failures arrive as is_error with subtype "success"; showing that subtype only confuses.
+    const subtype = e.subtype && e.subtype !== "success" ? ` (${e.subtype})` : "";
+    throw new ProviderError(`claude CLI error${subtype}: ${truncate(String(e.result ?? ""), 300)}`);
+  }
   if (typeof e.result !== "string") throw new ProviderError(`claude CLI envelope has no result${e.subtype ? ` (${e.subtype})` : ""}`);
   return e.result;
 }

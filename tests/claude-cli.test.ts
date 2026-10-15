@@ -17,6 +17,11 @@ describe("parseClaudeEnvelope", () => {
     expect(() => parseClaudeEnvelope("Error: something")).toThrow(ProviderError);
     expect(() => parseClaudeEnvelope(JSON.stringify({ subtype: "error_max_turns" }))).toThrow(/no result/);
   });
+
+  it("leaves out a misleading success subtype on errors", () => {
+    const envelope = JSON.stringify({ is_error: true, subtype: "success", result: "Failed to authenticate" });
+    expect(() => parseClaudeEnvelope(envelope)).toThrow("claude CLI error: Failed to authenticate");
+  });
 });
 
 describe("parsePromptedReply", () => {

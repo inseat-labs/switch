@@ -1,21 +1,21 @@
 {
   "reportVersion": 1,
   "kind": "compare",
-  "switchVersion": "0.1.0",
-  "generatedAt": "2026-09-30T15:37:47.827Z",
+  "switchVersion": "0.2.1",
+  "generatedAt": "2026-10-15T18:20:57.175Z",
   "baseline": "claude-cli:sonnet",
   "candidate": "claude-cli:haiku",
-  "repeat": 2,
+  "repeat": 3,
   "totals": {
     "regression": 0,
-    "change": 0,
+    "change": 1,
     "info": 0,
     "flaky": 1,
     "same": 5,
     "error": 0
   },
   "calls": {
-    "live": 24,
+    "live": 42,
     "cached": 0,
     "failed": 0
   },
@@ -27,7 +27,7 @@
       "flaky": [
         {
           "feature": "arg search_docs.limit",
-          "evidence": "2/2 -> 1/2"
+          "evidence": "3/3 -> 2/3"
         }
       ],
       "system": "You are an operations assistant for the Acme engineering team. All times are UTC.\nUse a tool when you have everything it needs. If a required detail is missing\nor ambiguous, ask the user instead of guessing.\n",
@@ -104,6 +104,39 @@
               "argErrors": [],
               "unparseable": false
             }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "search_docs",
+                "arguments": {
+                  "query": "rotate production API key",
+                  "limit": 5
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "search_docs",
+                  "arguments": {
+                    "query": "rotate production API key",
+                    "limit": 5
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
           }
         ],
         "candidate": [
@@ -117,7 +150,8 @@
               {
                 "name": "search_docs",
                 "arguments": {
-                  "query": "rotate production API key"
+                  "query": "how to rotate production API key",
+                  "limit": 5
                 }
               }
             ],
@@ -126,7 +160,8 @@
                 {
                   "name": "search_docs",
                   "arguments": {
-                    "query": "rotate production API key"
+                    "query": "how to rotate production API key",
+                    "limit": 5
                   }
                 }
               ],
@@ -148,7 +183,38 @@
               {
                 "name": "search_docs",
                 "arguments": {
-                  "query": "rotate production API key",
+                  "query": "how to rotate a production API key"
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "search_docs",
+                  "arguments": {
+                    "query": "how to rotate a production API key"
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "search_docs",
+                "arguments": {
+                  "query": "how to rotate production API key",
                   "limit": 5
                 }
               }
@@ -158,7 +224,7 @@
                 {
                   "name": "search_docs",
                   "arguments": {
-                    "query": "rotate production API key",
+                    "query": "how to rotate production API key",
                     "limit": 5
                   }
                 }
@@ -253,6 +319,39 @@
               "argErrors": [],
               "unparseable": false
             }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "search_docs",
+                "arguments": {
+                  "query": "rate limit /v1/orders endpoint",
+                  "limit": 3
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "search_docs",
+                  "arguments": {
+                    "query": "rate limit /v1/orders endpoint",
+                    "limit": 3
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
           }
         ],
         "candidate": [
@@ -291,6 +390,39 @@
           },
           {
             "index": 1,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "search_docs",
+                "arguments": {
+                  "query": "rate limit /v1/orders endpoint",
+                  "limit": 3
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "search_docs",
+                  "arguments": {
+                    "query": "rate limit /v1/orders endpoint",
+                    "limit": 3
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
@@ -334,7 +466,7 @@
       "messages": [
         {
           "role": "user",
-          "content": "Set up a 30-minute \"Checkout redesign review\" with maya@acme.io and li@acme.io on Tuesday 2026-10-06 at 14:00."
+          "content": "Set up a 30-minute \"Checkout redesign review\" with maya@acme.io and li@acme.io on Tuesday 2030-03-05 at 14:00."
         }
       ],
       "samples": {
@@ -350,7 +482,7 @@
                 "name": "create_calendar_event",
                 "arguments": {
                   "title": "Checkout redesign review",
-                  "start": "2026-10-06T14:00",
+                  "start": "2030-03-05T14:00",
                   "durationMinutes": 30,
                   "attendees": [
                     "maya@acme.io",
@@ -365,7 +497,7 @@
                   "name": "create_calendar_event",
                   "arguments": {
                     "title": "Checkout redesign review",
-                    "start": "2026-10-06T14:00",
+                    "start": "2030-03-05T14:00",
                     "durationMinutes": 30,
                     "attendees": [
                       "maya@acme.io",
@@ -393,7 +525,7 @@
                 "name": "create_calendar_event",
                 "arguments": {
                   "title": "Checkout redesign review",
-                  "start": "2026-10-06T14:00",
+                  "start": "2030-03-05T14:00",
                   "durationMinutes": 30,
                   "attendees": [
                     "maya@acme.io",
@@ -408,7 +540,50 @@
                   "name": "create_calendar_event",
                   "arguments": {
                     "title": "Checkout redesign review",
-                    "start": "2026-10-06T14:00",
+                    "start": "2030-03-05T14:00",
+                    "durationMinutes": 30,
+                    "attendees": [
+                      "maya@acme.io",
+                      "li@acme.io"
+                    ]
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "create_calendar_event",
+                "arguments": {
+                  "title": "Checkout redesign review",
+                  "start": "2030-03-05T14:00",
+                  "durationMinutes": 30,
+                  "attendees": [
+                    "maya@acme.io",
+                    "li@acme.io"
+                  ]
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "create_calendar_event",
+                  "arguments": {
+                    "title": "Checkout redesign review",
+                    "start": "2030-03-05T14:00",
                     "durationMinutes": 30,
                     "attendees": [
                       "maya@acme.io",
@@ -438,7 +613,7 @@
                 "name": "create_calendar_event",
                 "arguments": {
                   "title": "Checkout redesign review",
-                  "start": "2026-10-06T14:00",
+                  "start": "2030-03-05T14:00",
                   "durationMinutes": 30,
                   "attendees": [
                     "maya@acme.io",
@@ -453,7 +628,7 @@
                   "name": "create_calendar_event",
                   "arguments": {
                     "title": "Checkout redesign review",
-                    "start": "2026-10-06T14:00",
+                    "start": "2030-03-05T14:00",
                     "durationMinutes": 30,
                     "attendees": [
                       "maya@acme.io",
@@ -481,7 +656,7 @@
                 "name": "create_calendar_event",
                 "arguments": {
                   "title": "Checkout redesign review",
-                  "start": "2026-10-06T14:00",
+                  "start": "2030-03-05T14:00",
                   "durationMinutes": 30,
                   "attendees": [
                     "maya@acme.io",
@@ -496,7 +671,7 @@
                   "name": "create_calendar_event",
                   "arguments": {
                     "title": "Checkout redesign review",
-                    "start": "2026-10-06T14:00",
+                    "start": "2030-03-05T14:00",
                     "durationMinutes": 30,
                     "attendees": [
                       "maya@acme.io",
@@ -507,6 +682,273 @@
               ],
               "text": null,
               "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "create_calendar_event",
+                "arguments": {
+                  "title": "Checkout redesign review",
+                  "start": "2030-03-05T14:00",
+                  "durationMinutes": 30,
+                  "attendees": [
+                    "maya@acme.io",
+                    "li@acme.io"
+                  ]
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "create_calendar_event",
+                  "arguments": {
+                    "title": "Checkout redesign review",
+                    "start": "2030-03-05T14:00",
+                    "durationMinutes": 30,
+                    "attendees": [
+                      "maya@acme.io",
+                      "li@acme.io"
+                    ]
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "schedule past date",
+      "status": "change",
+      "findings": [
+        {
+          "category": "asked-instead-of-acting",
+          "severity": "change",
+          "detail": "asked a clarifying question instead of calling create_calendar_event",
+          "evidence": "acted 3/3 -> 1/3, asked 0/3 -> 2/3"
+        }
+      ],
+      "flaky": [],
+      "system": "You are an operations assistant for the Acme engineering team. All times are UTC.\nUse a tool when you have everything it needs. If a required detail is missing\nor ambiguous, ask the user instead of guessing.\n",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Set up a 30-minute \"Incident retro\" with maya@acme.io on Tuesday 2025-01-07 at 10:00."
+        }
+      ],
+      "samples": {
+        "baseline": [
+          {
+            "index": 0,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "create_calendar_event",
+                "arguments": {
+                  "title": "Incident retro",
+                  "start": "2025-01-07T10:00",
+                  "durationMinutes": 30,
+                  "attendees": [
+                    "maya@acme.io"
+                  ]
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "create_calendar_event",
+                  "arguments": {
+                    "title": "Incident retro",
+                    "start": "2025-01-07T10:00",
+                    "durationMinutes": 30,
+                    "attendees": [
+                      "maya@acme.io"
+                    ]
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 1,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "create_calendar_event",
+                "arguments": {
+                  "title": "Incident retro",
+                  "start": "2025-01-07T10:00",
+                  "durationMinutes": 30,
+                  "attendees": [
+                    "maya@acme.io"
+                  ]
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "create_calendar_event",
+                  "arguments": {
+                    "title": "Incident retro",
+                    "start": "2025-01-07T10:00",
+                    "durationMinutes": 30,
+                    "attendees": [
+                      "maya@acme.io"
+                    ]
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "create_calendar_event",
+                "arguments": {
+                  "title": "Incident retro",
+                  "start": "2025-01-07T10:00",
+                  "durationMinutes": 30,
+                  "attendees": [
+                    "maya@acme.io"
+                  ]
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "create_calendar_event",
+                  "arguments": {
+                    "title": "Incident retro",
+                    "start": "2025-01-07T10:00",
+                    "durationMinutes": 30,
+                    "attendees": [
+                      "maya@acme.io"
+                    ]
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          }
+        ],
+        "candidate": [
+          {
+            "index": 0,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": "Before I create this, I need to check the date. Tuesday 2025-01-07 is in the past. Today is 2026-10-15, so I can't schedule an event there. Did you mean a future Tuesday, such as 2026-10-20 or 2026-10-27, or a different date in 2025? Once you confirm the date, I'll create a 30-minute \"Incident retro\" at 10:00 UTC with maya@acme.io invited.",
+            "toolCalls": [],
+            "behavior": {
+              "toolCalls": [],
+              "text": "Before I create this, I need to check the date. Tuesday 2025-01-07 is in the past. Today is 2026-10-15, so I can't schedule an event there. Did you mean a future Tuesday, such as 2026-10-20 or 2026-10-27, or a different date in 2025? Once you confirm the date, I'll create a 30-minute \"Incident retro\" at 10:00 UTC with maya@acme.io invited.",
+              "asksClarification": true,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 1,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "create_calendar_event",
+                "arguments": {
+                  "title": "Incident retro",
+                  "start": "2025-01-07T10:00:00Z",
+                  "durationMinutes": 30,
+                  "attendees": [
+                    "maya@acme.io"
+                  ]
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "create_calendar_event",
+                  "arguments": {
+                    "title": "Incident retro",
+                    "start": "2025-01-07T10:00:00Z",
+                    "durationMinutes": 30,
+                    "attendees": [
+                      "maya@acme.io"
+                    ]
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": "Before I create this, I need to check the date. Today is 2026-10-15, and 2025-01-07 is already in the past, so an invite for that time would be useless. Did you mean Tuesday 2026-10-20 at 10:00 UTC, or another date? Once you confirm, I'll create the 30-minute \"Incident retro\" and invite maya@acme.io.",
+            "toolCalls": [],
+            "behavior": {
+              "toolCalls": [],
+              "text": "Before I create this, I need to check the date. Today is 2026-10-15, and 2025-01-07 is already in the past, so an invite for that time would be useless. Did you mean Tuesday 2026-10-20 at 10:00 UTC, or another date? Once you confirm, I'll create the 30-minute \"Incident retro\" and invite maya@acme.io.",
+              "asksClarification": true,
               "refused": false,
               "argsValid": true,
               "argErrors": [],
@@ -535,11 +977,11 @@
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
-            "text": "What date and start time (UTC) should the Q4 planning sync be on? I have the rest: 1 hour, with jordan@acme.io. Let me know if you'd like anyone else invited or a different title than \"Q4 Planning Sync\".",
+            "text": "What date and start time (UTC) should I schedule the 1-hour Q4 planning sync with jordan@acme.io? Once you confirm, I'll book it.",
             "toolCalls": [],
             "behavior": {
               "toolCalls": [],
-              "text": "What date and start time (UTC) should the Q4 planning sync be on? I have the rest: 1 hour, with jordan@acme.io. Let me know if you'd like anyone else invited or a different title than \"Q4 Planning Sync\".",
+              "text": "What date and start time (UTC) should I schedule the 1-hour Q4 planning sync with jordan@acme.io? Once you confirm, I'll book it.",
               "asksClarification": true,
               "refused": false,
               "argsValid": true,
@@ -552,11 +994,28 @@
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
-            "text": "What date and start time (UTC) should the Q4 planning sync be? Once I have that, I'll book it for 1 hour with jordan@acme.io. Do you also want anyone else invited, or should it be just the two of you?",
+            "text": "What date and start time (UTC) should I book the Q4 planning sync for? Once I have that, I'll create the 1-hour event with jordan@acme.io.",
             "toolCalls": [],
             "behavior": {
               "toolCalls": [],
-              "text": "What date and start time (UTC) should the Q4 planning sync be? Once I have that, I'll book it for 1 hour with jordan@acme.io. Do you also want anyone else invited, or should it be just the two of you?",
+              "text": "What date and start time (UTC) should I book the Q4 planning sync for? Once I have that, I'll create the 1-hour event with jordan@acme.io.",
+              "asksClarification": true,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": "Happy to book that. What date and start time (UTC) would you like for the Q4 planning sync with jordan@acme.io? It will be 60 minutes.",
+            "toolCalls": [],
+            "behavior": {
+              "toolCalls": [],
+              "text": "Happy to book that. What date and start time (UTC) would you like for the Q4 planning sync with jordan@acme.io? It will be 60 minutes.",
               "asksClarification": true,
               "refused": false,
               "argsValid": true,
@@ -571,36 +1030,51 @@
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
-            "text": "I can help you book that Q4 planning sync with jordan@acme.io. However, I need one more detail:\n\n**What time would you like to schedule the meeting?** Please provide a specific time (for example: 2026-10-01 at 14:00, or tomorrow at 10:00 AM), and I'll create the calendar event for 1 hour.",
+            "text": "I can book that. What date and start time should I use? Please include your time zone, since all times here are UTC unless you say otherwise. I'll use the title \"Q4 planning sync\", a 60-minute duration, and jordan@acme.io as the attendee. Should I add anyone else?",
             "toolCalls": [],
             "behavior": {
               "toolCalls": [],
-              "text": "I can help you book that Q4 planning sync with jordan@acme.io. However, I need one more detail:\n\n**What time would you like to schedule the meeting?** Please provide a specific time (for example: 2026-10-01 at 14:00, or tomorrow at 10:00 AM), and I'll create the calendar event for 1 hour.",
+              "text": "I can book that. What date and start time should I use? Please include your time zone, since all times here are UTC unless you say otherwise. I'll use the title \"Q4 planning sync\", a 60-minute duration, and jordan@acme.io as the attendee. Should I add anyone else?",
               "asksClarification": true,
               "refused": false,
               "argsValid": true,
               "argErrors": [],
               "unparseable": false
-            },
-            "formatNote": "plain-text reply, no JSON"
+            }
           },
           {
             "index": 1,
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
-            "text": "I'd be happy to help you book that Q4 planning sync with jordan@acme.io. To create the calendar event, I need to know:\n\n**When would you like to schedule this meeting?** Please provide a date and time (for example: 2026-10-01 at 14:00 UTC, or \"tomorrow at 10:00 UTC\").",
+            "text": "I can set that up. What date and start time should I use? Times are UTC. Should I also add anyone else to the invite, or keep it to jordan@acme.io?",
             "toolCalls": [],
             "behavior": {
               "toolCalls": [],
-              "text": "I'd be happy to help you book that Q4 planning sync with jordan@acme.io. To create the calendar event, I need to know:\n\n**When would you like to schedule this meeting?** Please provide a date and time (for example: 2026-10-01 at 14:00 UTC, or \"tomorrow at 10:00 UTC\").",
+              "text": "I can set that up. What date and start time should I use? Times are UTC. Should I also add anyone else to the invite, or keep it to jordan@acme.io?",
               "asksClarification": true,
               "refused": false,
               "argsValid": true,
               "argErrors": [],
               "unparseable": false
-            },
-            "formatNote": "plain-text reply, no JSON"
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": "I can set that up. What date and start time should I use? Times are UTC, and today is 2026-10-15. Should I also add you ([redacted-email]) as an attendee? I'll title it \"Q4 Planning Sync\" for 60 minutes unless you want something different.",
+            "toolCalls": [],
+            "behavior": {
+              "toolCalls": [],
+              "text": "I can set that up. What date and start time should I use? Times are UTC, and today is 2026-10-15. Should I also add you ([redacted-email]) as an attendee? I'll title it \"Q4 Planning Sync\" for 60 minutes unless you want something different.",
+              "asksClarification": true,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
           }
         ]
       }
@@ -631,7 +1105,7 @@
                 "arguments": {
                   "to": "priya@acme.io",
                   "subject": "Staging deploy finished - please run smoke tests",
-                  "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance and let me know the results?\n\nThanks!"
+                  "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!"
                 }
               }
             ],
@@ -642,7 +1116,7 @@
                   "arguments": {
                     "to": "priya@acme.io",
                     "subject": "Staging deploy finished - please run smoke tests",
-                    "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance and let me know the results?\n\nThanks!"
+                    "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!"
                   }
                 }
               ],
@@ -666,7 +1140,7 @@
                 "arguments": {
                   "to": "priya@acme.io",
                   "subject": "Staging deploy finished - please run smoke tests",
-                  "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance and let me know the results?\n\nThanks!"
+                  "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!"
                 }
               }
             ],
@@ -677,7 +1151,42 @@
                   "arguments": {
                     "to": "priya@acme.io",
                     "subject": "Staging deploy finished - please run smoke tests",
-                    "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance and let me know the results?\n\nThanks!"
+                    "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!"
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "send_email",
+                "arguments": {
+                  "to": "priya@acme.io",
+                  "subject": "Staging deploy finished - please run smoke tests",
+                  "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!"
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "send_email",
+                  "arguments": {
+                    "to": "priya@acme.io",
+                    "subject": "Staging deploy finished - please run smoke tests",
+                    "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!"
                   }
                 }
               ],
@@ -702,8 +1211,8 @@
                 "name": "send_email",
                 "arguments": {
                   "to": "priya@acme.io",
-                  "subject": "Staging Deploy Complete - Smoke Tests Ready",
-                  "body": "Hi Priya,\n\nThe staging deploy has finished successfully. Please proceed with running the smoke tests when you have a chance.\n\nThanks!"
+                  "subject": "Staging deploy finished - please run smoke tests",
+                  "body": "Hi Priya,\n\nThe staging deploy has finished. Could you run the smoke tests when you get a chance?\n\nThanks!"
                 }
               }
             ],
@@ -713,8 +1222,8 @@
                   "name": "send_email",
                   "arguments": {
                     "to": "priya@acme.io",
-                    "subject": "Staging Deploy Complete - Smoke Tests Ready",
-                    "body": "Hi Priya,\n\nThe staging deploy has finished successfully. Please proceed with running the smoke tests when you have a chance.\n\nThanks!"
+                    "subject": "Staging deploy finished - please run smoke tests",
+                    "body": "Hi Priya,\n\nThe staging deploy has finished. Could you run the smoke tests when you get a chance?\n\nThanks!"
                   }
                 }
               ],
@@ -737,8 +1246,8 @@
                 "name": "send_email",
                 "arguments": {
                   "to": "priya@acme.io",
-                  "subject": "Staging Deploy Complete - Please Run Smoke Tests",
-                  "body": "Hi Priya,\n\nThe staging deploy has finished successfully. Could you please run the smoke tests to verify everything is working as expected?\n\nThanks!\n\nBest regards,\nAcme Operations"
+                  "subject": "Staging deploy finished: smoke tests needed",
+                  "body": "Hi Priya,\n\nThe staging deploy has finished. Could you run the smoke tests when you get a chance?\n\nThanks!"
                 }
               }
             ],
@@ -748,8 +1257,43 @@
                   "name": "send_email",
                   "arguments": {
                     "to": "priya@acme.io",
-                    "subject": "Staging Deploy Complete - Please Run Smoke Tests",
-                    "body": "Hi Priya,\n\nThe staging deploy has finished successfully. Could you please run the smoke tests to verify everything is working as expected?\n\nThanks!\n\nBest regards,\nAcme Operations"
+                    "subject": "Staging deploy finished: smoke tests needed",
+                    "body": "Hi Priya,\n\nThe staging deploy has finished. Could you run the smoke tests when you get a chance?\n\nThanks!"
+                  }
+                }
+              ],
+              "text": null,
+              "asksClarification": false,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": null,
+            "toolCalls": [
+              {
+                "name": "send_email",
+                "arguments": {
+                  "to": "priya@acme.io",
+                  "subject": "Staging deploy finished: please run smoke tests",
+                  "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!"
+                }
+              }
+            ],
+            "behavior": {
+              "toolCalls": [
+                {
+                  "name": "send_email",
+                  "arguments": {
+                    "to": "priya@acme.io",
+                    "subject": "Staging deploy finished: please run smoke tests",
+                    "body": "Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!"
                   }
                 }
               ],
@@ -783,11 +1327,11 @@
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
-            "text": "Happy to send that. Who should I email it to? I need the recipient's email address. Also, do you want any extra details in the note (for example, the reason for the slip or the exact Friday date, which would be 2026-10-02), or should I keep it to a short line saying the 2.4 release slips to Friday?",
+            "text": "Who should I send the note to? I need the recipient's email address. Also, do you want any specific wording or details (e.g., the reason for the slip, or the exact date for Friday), or should I keep it to a short note saying the 2.4 release has slipped to Friday?",
             "toolCalls": [],
             "behavior": {
               "toolCalls": [],
-              "text": "Happy to send that. Who should I email it to? I need the recipient's email address. Also, do you want any extra details in the note (for example, the reason for the slip or the exact Friday date, which would be 2026-10-02), or should I keep it to a short line saying the 2.4 release slips to Friday?",
+              "text": "Who should I send the note to? I need the recipient's email address. Also, do you want any specific wording or details (e.g., the reason for the slip, or the exact date for Friday), or should I keep it to a short note saying the 2.4 release has slipped to Friday?",
               "asksClarification": true,
               "refused": false,
               "argsValid": true,
@@ -800,11 +1344,28 @@
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
-            "text": "Happy to send that note. Who should I send it to? I need the recipient's email address. If you'd like a particular subject line or any extra detail (like the reason for the slip), let me know. Otherwise I'll use the subject \"2.4 release slipping to Friday\" and keep the body short.",
+            "text": "Who should I send the note to? I need a recipient email address. Also, would you like any specific wording or details (e.g., the reason for the slip, or the exact date for Friday, which would be 2026-10-16), or should I keep it to a short one-liner like \"The 2.4 release is slipping to Friday\"?",
             "toolCalls": [],
             "behavior": {
               "toolCalls": [],
-              "text": "Happy to send that note. Who should I send it to? I need the recipient's email address. If you'd like a particular subject line or any extra detail (like the reason for the slip), let me know. Otherwise I'll use the subject \"2.4 release slipping to Friday\" and keep the body short.",
+              "text": "Who should I send the note to? I need a recipient email address. Also, would you like any specific wording or details (e.g., the reason for the slip, or the exact date for Friday, which would be 2026-10-16), or should I keep it to a short one-liner like \"The 2.4 release is slipping to Friday\"?",
+              "asksClarification": true,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": "Happy to send that. Who should I email it to? I need a recipient address. Also, should the note mention a specific date for Friday (e.g., Friday, Oct 16), or keep it as just \"Friday\"?",
+            "toolCalls": [],
+            "behavior": {
+              "toolCalls": [],
+              "text": "Happy to send that. Who should I email it to? I need a recipient address. Also, should the note mention a specific date for Friday (e.g., Friday, Oct 16), or keep it as just \"Friday\"?",
               "asksClarification": true,
               "refused": false,
               "argsValid": true,
@@ -819,36 +1380,51 @@
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
-            "text": "I'd be happy to help send that notification. I need a couple of clarifications:\n\n1. **Who should I send this to?** (email address or team name)\n2. **Which Friday?** (e.g., this coming Friday October 2nd, or a different date?)\n\nOnce you provide those details, I'll send the note right away.",
+            "text": "Who should I send this to? Please give me the recipient's email address. I'll use \"2.4 release slips to Friday\" as the subject and a short note as the body. Let me know if you want different wording.",
             "toolCalls": [],
             "behavior": {
               "toolCalls": [],
-              "text": "I'd be happy to help send that notification. I need a couple of clarifications:\n\n1. **Who should I send this to?** (email address or team name)\n2. **Which Friday?** (e.g., this coming Friday October 2nd, or a different date?)\n\nOnce you provide those details, I'll send the note right away.",
+              "text": "Who should I send this to? Please give me the recipient's email address. I'll use \"2.4 release slips to Friday\" as the subject and a short note as the body. Let me know if you want different wording.",
               "asksClarification": true,
               "refused": false,
               "argsValid": true,
               "argErrors": [],
               "unparseable": false
-            },
-            "formatNote": "plain-text reply, no JSON"
+            }
           },
           {
             "index": 1,
             "source": "live",
             "status": "ok",
             "toolMode": "prompted",
-            "text": "I can help you send that note, but I need to know:\n\n1. **Who should I send it to?** (email address or list of recipients)\n2. **Any additional details?** For example, should I include a reason for the slip, or any other context?\n\nOnce you provide the recipient(s), I'll send out a quick message about the 2.4 release moving to Friday (2026-10-02).",
+            "text": "Who should I send this to? Please give me the recipient's email address. I'll use \"2.4 release slips to Friday\" as the subject and the same line as the body unless you want different wording.",
             "toolCalls": [],
             "behavior": {
               "toolCalls": [],
-              "text": "I can help you send that note, but I need to know:\n\n1. **Who should I send it to?** (email address or list of recipients)\n2. **Any additional details?** For example, should I include a reason for the slip, or any other context?\n\nOnce you provide the recipient(s), I'll send out a quick message about the 2.4 release moving to Friday (2026-10-02).",
+              "text": "Who should I send this to? Please give me the recipient's email address. I'll use \"2.4 release slips to Friday\" as the subject and the same line as the body unless you want different wording.",
               "asksClarification": true,
               "refused": false,
               "argsValid": true,
               "argErrors": [],
               "unparseable": false
-            },
-            "formatNote": "plain-text reply, no JSON"
+            }
+          },
+          {
+            "index": 2,
+            "source": "live",
+            "status": "ok",
+            "toolMode": "prompted",
+            "text": "Who should I send this to? Please give me the recipient's email address. I'll write the subject and body as: \"2.4 release slips to Friday.\" Let me know if you want different wording.",
+            "toolCalls": [],
+            "behavior": {
+              "toolCalls": [],
+              "text": "Who should I send this to? Please give me the recipient's email address. I'll write the subject and body as: \"2.4 release slips to Friday.\" Let me know if you want different wording.",
+              "asksClarification": true,
+              "refused": false,
+              "argsValid": true,
+              "argErrors": [],
+              "unparseable": false
+            }
           }
         ]
       }

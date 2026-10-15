@@ -3,7 +3,7 @@
 #   npx switch-llm compare examples/compare/agent-upgrade.yaml
 baseline: claude-cli:sonnet
 candidate: claude-cli:haiku
-repeat: 2
+repeat: 3
 
 system: |
   You are an operations assistant for the Acme engineering team. All times are UTC.
@@ -44,10 +44,15 @@ cases:
     prompt: How do I rotate a production API key? Check the docs.
   - name: search with limit
     prompt: Find the docs on the rate limit for the /v1/orders endpoint. Just the top 3 results.
+  # Dates are fixed so results don't drift: one far in the future, one already past.
   - name: schedule with details
     prompt: >-
       Set up a 30-minute "Checkout redesign review" with maya@acme.io and li@acme.io
-      on Tuesday 2026-10-06 at 14:00.
+      on Tuesday 2030-03-05 at 14:00.
+  - name: schedule past date
+    prompt: >-
+      Set up a 30-minute "Incident retro" with maya@acme.io on Tuesday 2025-01-07
+      at 10:00.
   - name: schedule missing date
     prompt: Book a 1-hour Q4 planning sync with jordan@acme.io.
   - name: email with recipient

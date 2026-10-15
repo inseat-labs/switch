@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/); while the version is `0.x`, any
 release may contain breaking changes.
 
+## Unreleased
+
+### Fixed
+
+- `claude-cli` errors no longer show a misleading `(success)` label, for example
+  when the Claude Code login has expired.
+- The `agent-upgrade` example uses fixed dates (one future, one past) so its
+  results no longer drift as the calendar moves. New `schedule past date` case;
+  the example now uses `repeat: 3`. README and reports updated from a 2026-10-15 run.
+
 ## 0.2.1 - 2026-10-13
 
 ### Changed

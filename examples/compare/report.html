@@ -22,11 +22,11 @@ ul.findings{margin:10px 0;padding-left:20px}ul.findings li{margin:2px 0}
 </style></head>
 <body><main>
 <h1>claude-cli:sonnet → claude-cli:haiku</h1>
-<p class="muted">6 cases × 2 samples per model · Result: 0 regression, 0 change, 5 same, 1 flaky · calls: 24 live, 0 cached, 0 failed · 2026-09-30T15:37:47.827Z</p>
+<p class="muted">7 cases × 3 samples per model · Result: 0 regression, 1 change, 5 same, 1 flaky · calls: 42 live, 0 cached, 0 failed · 2026-10-15T18:20:57.175Z</p>
 <p class="muted">Tool mode <code>prompted</code>: the Claude CLI cannot take tool definitions, so tools were described in the system prompt and the model replied with JSON. This approximates, but is not identical to, native tool calling.</p>
-<div class="summary"><span class="pill">0 regression</span><span class="pill">5 same</span><span class="pill">1 flaky</span></div>
+<div class="summary"><span class="pill">0 regression</span><span class="pill">1 change</span><span class="pill">5 same</span><span class="pill">1 flaky</span></div>
 <details class="case"><summary><span class="badge flaky">? FLAKY</span><h2>search docs</h2></summary>
-<ul class="findings"><li class="muted">flaky: arg search_docs.limit <span>2/2 -&gt; 1/2</span></li></ul><details><summary class="muted">prompt and system</summary><pre>system: You are an operations assistant for the Acme engineering team. All times are UTC.
+<ul class="findings"><li class="muted">flaky: arg search_docs.limit <span>3/3 -&gt; 2/3</span></li></ul><details><summary class="muted">prompt and system</summary><pre>system: You are an operations assistant for the Acme engineering team. All times are UTC.
 Use a tool when you have everything it needs. If a required detail is missing
 or ambiguous, ask the user instead of guessing.
 </pre><pre>user: How do I rotate a production API key? Check the docs.</pre></details>
@@ -36,11 +36,17 @@ or ambiguous, ask the user instead of guessing.
 }</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
   &quot;query&quot;: &quot;rotate production API key&quot;,
   &quot;limit&quot;: 5
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
+  &quot;query&quot;: &quot;rotate production API key&quot;,
+  &quot;limit&quot;: 5
 }</pre></div></div>
 <div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
-  &quot;query&quot;: &quot;rotate production API key&quot;
+  &quot;query&quot;: &quot;how to rotate production API key&quot;,
+  &quot;limit&quot;: 5
 }</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
-  &quot;query&quot;: &quot;rotate production API key&quot;,
+  &quot;query&quot;: &quot;how to rotate a production API key&quot;
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
+  &quot;query&quot;: &quot;how to rotate production API key&quot;,
   &quot;limit&quot;: 5
 }</pre></div></div></div></details>
 <details class="case"><summary><span class="badge ok">✓ SAME</span><h2>search with limit</h2></summary>
@@ -54,6 +60,9 @@ or ambiguous, ask the user instead of guessing.
 }</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
   &quot;query&quot;: &quot;rate limit /v1/orders endpoint&quot;,
   &quot;limit&quot;: 3
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
+  &quot;query&quot;: &quot;rate limit /v1/orders endpoint&quot;,
+  &quot;limit&quot;: 3
 }</pre></div></div>
 <div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
   &quot;query&quot;: &quot;rate limit /v1/orders endpoint&quot;,
@@ -61,15 +70,18 @@ or ambiguous, ask the user instead of guessing.
 }</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
   &quot;query&quot;: &quot;rate limit /v1/orders endpoint&quot;,
   &quot;limit&quot;: 3
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">search_docs</div><pre>{
+  &quot;query&quot;: &quot;rate limit /v1/orders endpoint&quot;,
+  &quot;limit&quot;: 3
 }</pre></div></div></div></details>
 <details class="case"><summary><span class="badge ok">✓ SAME</span><h2>schedule with details</h2></summary>
 <details><summary class="muted">prompt and system</summary><pre>system: You are an operations assistant for the Acme engineering team. All times are UTC.
 Use a tool when you have everything it needs. If a required detail is missing
 or ambiguous, ask the user instead of guessing.
-</pre><pre>user: Set up a 30-minute &quot;Checkout redesign review&quot; with maya@acme.io and li@acme.io on Tuesday 2026-10-06 at 14:00.</pre></details>
+</pre><pre>user: Set up a 30-minute &quot;Checkout redesign review&quot; with maya@acme.io and li@acme.io on Tuesday 2030-03-05 at 14:00.</pre></details>
 <div class="grid"><div class="col"><h3>Baseline · claude-cli:sonnet</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
   &quot;title&quot;: &quot;Checkout redesign review&quot;,
-  &quot;start&quot;: &quot;2026-10-06T14:00&quot;,
+  &quot;start&quot;: &quot;2030-03-05T14:00&quot;,
   &quot;durationMinutes&quot;: 30,
   &quot;attendees&quot;: [
     &quot;maya@acme.io&quot;,
@@ -77,7 +89,15 @@ or ambiguous, ask the user instead of guessing.
   ]
 }</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
   &quot;title&quot;: &quot;Checkout redesign review&quot;,
-  &quot;start&quot;: &quot;2026-10-06T14:00&quot;,
+  &quot;start&quot;: &quot;2030-03-05T14:00&quot;,
+  &quot;durationMinutes&quot;: 30,
+  &quot;attendees&quot;: [
+    &quot;maya@acme.io&quot;,
+    &quot;li@acme.io&quot;
+  ]
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
+  &quot;title&quot;: &quot;Checkout redesign review&quot;,
+  &quot;start&quot;: &quot;2030-03-05T14:00&quot;,
   &quot;durationMinutes&quot;: 30,
   &quot;attendees&quot;: [
     &quot;maya@acme.io&quot;,
@@ -86,7 +106,7 @@ or ambiguous, ask the user instead of guessing.
 }</pre></div></div>
 <div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
   &quot;title&quot;: &quot;Checkout redesign review&quot;,
-  &quot;start&quot;: &quot;2026-10-06T14:00&quot;,
+  &quot;start&quot;: &quot;2030-03-05T14:00&quot;,
   &quot;durationMinutes&quot;: 30,
   &quot;attendees&quot;: [
     &quot;maya@acme.io&quot;,
@@ -94,24 +114,63 @@ or ambiguous, ask the user instead of guessing.
   ]
 }</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
   &quot;title&quot;: &quot;Checkout redesign review&quot;,
-  &quot;start&quot;: &quot;2026-10-06T14:00&quot;,
+  &quot;start&quot;: &quot;2030-03-05T14:00&quot;,
+  &quot;durationMinutes&quot;: 30,
+  &quot;attendees&quot;: [
+    &quot;maya@acme.io&quot;,
+    &quot;li@acme.io&quot;
+  ]
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
+  &quot;title&quot;: &quot;Checkout redesign review&quot;,
+  &quot;start&quot;: &quot;2030-03-05T14:00&quot;,
   &quot;durationMinutes&quot;: 30,
   &quot;attendees&quot;: [
     &quot;maya@acme.io&quot;,
     &quot;li@acme.io&quot;
   ]
 }</pre></div></div></div></details>
+<details class="case" open><summary><span class="badge warn">~ CHANGE</span><h2>schedule past date</h2></summary>
+<ul class="findings"><li><strong>asked-instead-of-acting</strong> (change): asked a clarifying question instead of calling create_calendar_event <span class="muted">acted 3/3 -&gt; 1/3, asked 0/3 -&gt; 2/3</span></li></ul><details><summary class="muted">prompt and system</summary><pre>system: You are an operations assistant for the Acme engineering team. All times are UTC.
+Use a tool when you have everything it needs. If a required detail is missing
+or ambiguous, ask the user instead of guessing.
+</pre><pre>user: Set up a 30-minute &quot;Incident retro&quot; with maya@acme.io on Tuesday 2025-01-07 at 10:00.</pre></details>
+<div class="grid"><div class="col"><h3>Baseline · claude-cli:sonnet</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
+  &quot;title&quot;: &quot;Incident retro&quot;,
+  &quot;start&quot;: &quot;2025-01-07T10:00&quot;,
+  &quot;durationMinutes&quot;: 30,
+  &quot;attendees&quot;: [
+    &quot;maya@acme.io&quot;
+  ]
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
+  &quot;title&quot;: &quot;Incident retro&quot;,
+  &quot;start&quot;: &quot;2025-01-07T10:00&quot;,
+  &quot;durationMinutes&quot;: 30,
+  &quot;attendees&quot;: [
+    &quot;maya@acme.io&quot;
+  ]
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
+  &quot;title&quot;: &quot;Incident retro&quot;,
+  &quot;start&quot;: &quot;2025-01-07T10:00&quot;,
+  &quot;durationMinutes&quot;: 30,
+  &quot;attendees&quot;: [
+    &quot;maya@acme.io&quot;
+  ]
+}</pre></div></div>
+<div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Before I create this, I need to check the date. Tuesday 2025-01-07 is in the past. Today is 2026-10-15, so I can&#39;t schedule an event there. Did you mean a future Tuesday, such as 2026-10-20 or 2026-10-27, or a different date in 2025? Once you confirm the date, I&#39;ll create a 30-minute &quot;Incident retro&quot; at 10:00 UTC with maya@acme.io invited.</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">create_calendar_event</div><pre>{
+  &quot;title&quot;: &quot;Incident retro&quot;,
+  &quot;start&quot;: &quot;2025-01-07T10:00:00Z&quot;,
+  &quot;durationMinutes&quot;: 30,
+  &quot;attendees&quot;: [
+    &quot;maya@acme.io&quot;
+  ]
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Before I create this, I need to check the date. Today is 2026-10-15, and 2025-01-07 is already in the past, so an invite for that time would be useless. Did you mean Tuesday 2026-10-20 at 10:00 UTC, or another date? Once you confirm, I&#39;ll create the 30-minute &quot;Incident retro&quot; and invite maya@acme.io.</pre></div></div></div></details>
 <details class="case"><summary><span class="badge ok">✓ SAME</span><h2>schedule missing date</h2></summary>
 <details><summary class="muted">prompt and system</summary><pre>system: You are an operations assistant for the Acme engineering team. All times are UTC.
 Use a tool when you have everything it needs. If a required detail is missing
 or ambiguous, ask the user instead of guessing.
 </pre><pre>user: Book a 1-hour Q4 planning sync with jordan@acme.io.</pre></details>
-<div class="grid"><div class="col"><h3>Baseline · claude-cli:sonnet</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>What date and start time (UTC) should the Q4 planning sync be on? I have the rest: 1 hour, with jordan@acme.io. Let me know if you&#39;d like anyone else invited or a different title than &quot;Q4 Planning Sync&quot;.</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>What date and start time (UTC) should the Q4 planning sync be? Once I have that, I&#39;ll book it for 1 hour with jordan@acme.io. Do you also want anyone else invited, or should it be just the two of you?</pre></div></div>
-<div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">plain-text reply, no JSON</span><span class="tag">asks clarification</span></div><pre>I can help you book that Q4 planning sync with jordan@acme.io. However, I need one more detail:
-
-**What time would you like to schedule the meeting?** Please provide a specific time (for example: 2026-10-01 at 14:00, or tomorrow at 10:00 AM), and I&#39;ll create the calendar event for 1 hour.</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">plain-text reply, no JSON</span><span class="tag">asks clarification</span></div><pre>I&#39;d be happy to help you book that Q4 planning sync with jordan@acme.io. To create the calendar event, I need to know:
-
-**When would you like to schedule this meeting?** Please provide a date and time (for example: 2026-10-01 at 14:00 UTC, or &quot;tomorrow at 10:00 UTC&quot;).</pre></div></div></div></details>
+<div class="grid"><div class="col"><h3>Baseline · claude-cli:sonnet</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>What date and start time (UTC) should I schedule the 1-hour Q4 planning sync with jordan@acme.io? Once you confirm, I&#39;ll book it.</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>What date and start time (UTC) should I book the Q4 planning sync for? Once I have that, I&#39;ll create the 1-hour event with jordan@acme.io.</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Happy to book that. What date and start time (UTC) would you like for the Q4 planning sync with jordan@acme.io? It will be 60 minutes.</pre></div></div>
+<div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>I can book that. What date and start time should I use? Please include your time zone, since all times here are UTC unless you say otherwise. I&#39;ll use the title &quot;Q4 planning sync&quot;, a 60-minute duration, and jordan@acme.io as the attendee. Should I add anyone else?</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>I can set that up. What date and start time should I use? Times are UTC. Should I also add anyone else to the invite, or keep it to jordan@acme.io?</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>I can set that up. What date and start time should I use? Times are UTC, and today is 2026-10-15. Should I also add you ([redacted-email]) as an attendee? I&#39;ll title it &quot;Q4 Planning Sync&quot; for 60 minutes unless you want something different.</pre></div></div></div></details>
 <details class="case"><summary><span class="badge ok">✓ SAME</span><h2>email with recipient</h2></summary>
 <details><summary class="muted">prompt and system</summary><pre>system: You are an operations assistant for the Acme engineering team. All times are UTC.
 Use a tool when you have everything it needs. If a required detail is missing
@@ -120,37 +179,35 @@ or ambiguous, ask the user instead of guessing.
 <div class="grid"><div class="col"><h3>Baseline · claude-cli:sonnet</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">send_email</div><pre>{
   &quot;to&quot;: &quot;priya@acme.io&quot;,
   &quot;subject&quot;: &quot;Staging deploy finished - please run smoke tests&quot;,
-  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance and let me know the results?\n\nThanks!&quot;
+  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!&quot;
 }</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">send_email</div><pre>{
   &quot;to&quot;: &quot;priya@acme.io&quot;,
   &quot;subject&quot;: &quot;Staging deploy finished - please run smoke tests&quot;,
-  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance and let me know the results?\n\nThanks!&quot;
+  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!&quot;
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">send_email</div><pre>{
+  &quot;to&quot;: &quot;priya@acme.io&quot;,
+  &quot;subject&quot;: &quot;Staging deploy finished - please run smoke tests&quot;,
+  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!&quot;
 }</pre></div></div>
 <div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">send_email</div><pre>{
   &quot;to&quot;: &quot;priya@acme.io&quot;,
-  &quot;subject&quot;: &quot;Staging Deploy Complete - Smoke Tests Ready&quot;,
-  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished successfully. Please proceed with running the smoke tests when you have a chance.\n\nThanks!&quot;
+  &quot;subject&quot;: &quot;Staging deploy finished - please run smoke tests&quot;,
+  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished. Could you run the smoke tests when you get a chance?\n\nThanks!&quot;
 }</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">send_email</div><pre>{
   &quot;to&quot;: &quot;priya@acme.io&quot;,
-  &quot;subject&quot;: &quot;Staging Deploy Complete - Please Run Smoke Tests&quot;,
-  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished successfully. Could you please run the smoke tests to verify everything is working as expected?\n\nThanks!\n\nBest regards,\nAcme Operations&quot;
+  &quot;subject&quot;: &quot;Staging deploy finished: smoke tests needed&quot;,
+  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished. Could you run the smoke tests when you get a chance?\n\nThanks!&quot;
+}</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span></div><div class="call">send_email</div><pre>{
+  &quot;to&quot;: &quot;priya@acme.io&quot;,
+  &quot;subject&quot;: &quot;Staging deploy finished: please run smoke tests&quot;,
+  &quot;body&quot;: &quot;Hi Priya,\n\nThe staging deploy has finished. Could you please run the smoke tests when you get a chance?\n\nThanks!&quot;
 }</pre></div></div></div></details>
 <details class="case"><summary><span class="badge ok">✓ SAME</span><h2>email missing recipient</h2></summary>
 <details><summary class="muted">prompt and system</summary><pre>system: You are an operations assistant for the Acme engineering team. All times are UTC.
 Use a tool when you have everything it needs. If a required detail is missing
 or ambiguous, ask the user instead of guessing.
 </pre><pre>user: Send a quick note that the 2.4 release slips to Friday.</pre></details>
-<div class="grid"><div class="col"><h3>Baseline · claude-cli:sonnet</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Happy to send that. Who should I email it to? I need the recipient&#39;s email address. Also, do you want any extra details in the note (for example, the reason for the slip or the exact Friday date, which would be 2026-10-02), or should I keep it to a short line saying the 2.4 release slips to Friday?</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Happy to send that note. Who should I send it to? I need the recipient&#39;s email address. If you&#39;d like a particular subject line or any extra detail (like the reason for the slip), let me know. Otherwise I&#39;ll use the subject &quot;2.4 release slipping to Friday&quot; and keep the body short.</pre></div></div>
-<div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">plain-text reply, no JSON</span><span class="tag">asks clarification</span></div><pre>I&#39;d be happy to help send that notification. I need a couple of clarifications:
-
-1. **Who should I send this to?** (email address or team name)
-2. **Which Friday?** (e.g., this coming Friday October 2nd, or a different date?)
-
-Once you provide those details, I&#39;ll send the note right away.</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">plain-text reply, no JSON</span><span class="tag">asks clarification</span></div><pre>I can help you send that note, but I need to know:
-
-1. **Who should I send it to?** (email address or list of recipients)
-2. **Any additional details?** For example, should I include a reason for the slip, or any other context?
-
-Once you provide the recipient(s), I&#39;ll send out a quick message about the 2.4 release moving to Friday (2026-10-02).</pre></div></div></div></details>
+<div class="grid"><div class="col"><h3>Baseline · claude-cli:sonnet</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Who should I send the note to? I need the recipient&#39;s email address. Also, do you want any specific wording or details (e.g., the reason for the slip, or the exact date for Friday), or should I keep it to a short note saying the 2.4 release has slipped to Friday?</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Who should I send the note to? I need a recipient email address. Also, would you like any specific wording or details (e.g., the reason for the slip, or the exact date for Friday, which would be 2026-10-16), or should I keep it to a short one-liner like &quot;The 2.4 release is slipping to Friday&quot;?</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Happy to send that. Who should I email it to? I need a recipient address. Also, should the note mention a specific date for Friday (e.g., Friday, Oct 16), or keep it as just &quot;Friday&quot;?</pre></div></div>
+<div class="col"><h3>Candidate · claude-cli:haiku</h3><div class="sample"><div class="tags"><span class="tag">#1</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Who should I send this to? Please give me the recipient&#39;s email address. I&#39;ll use &quot;2.4 release slips to Friday&quot; as the subject and a short note as the body. Let me know if you want different wording.</pre></div><div class="sample"><div class="tags"><span class="tag">#2</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Who should I send this to? Please give me the recipient&#39;s email address. I&#39;ll use &quot;2.4 release slips to Friday&quot; as the subject and the same line as the body unless you want different wording.</pre></div><div class="sample"><div class="tags"><span class="tag">#3</span><span class="tag">live</span><span class="tag">tools: prompted</span><span class="tag">asks clarification</span></div><pre>Who should I send this to? Please give me the recipient&#39;s email address. I&#39;ll write the subject and body as: &quot;2.4 release slips to Friday.&quot; Let me know if you want different wording.</pre></div></div></div></details>
 <p class="muted">Generated by Switch. A change is reported only when it appears in a majority of one model's samples and a minority of the other's; other differences are marked flaky.</p>
 </main></body></html>
