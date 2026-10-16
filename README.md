@@ -7,9 +7,9 @@ reports only the tool-calling behaviors that change consistently.
 Your current model's behavior is the baseline. You do not write expected answers
 or assertions.
 
-![switch compare: Sonnet vs Haiku on six agent tasks, five unchanged and one flaky](https://raw.githubusercontent.com/inseat-labs/switch/main/docs/demo.gif)
+![switch compare: Sonnet vs Haiku on seven agent tasks: five unchanged, one change, one flaky](https://raw.githubusercontent.com/inseat-labs/switch/main/docs/demo.gif)
 
-<sub>A real run (Claude Sonnet → Haiku on an earlier, 6-case version of the example config); the 59-second wait is sped up.</sub>
+<sub>A real run (Claude Sonnet → Haiku on the example config, 2026-10-15); the 84-second wait is sped up.</sub>
 
 > Status: early (0.x). Published to npm as [`switch-llm`](https://www.npmjs.com/package/switch-llm); the command is `switch`.
 > Formats and categories may still change.
